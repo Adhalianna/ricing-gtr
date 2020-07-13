@@ -6,6 +6,7 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 \+ bspwm <br>
 \+ alacritty <br>
 \+ albert <br>
+\+ xdotool (an important dependecy for a fix that makes xfce4-panel dynamic in bspw session, personal recommendation over xdo and wmctrl) <br>
 \- light-locker (bug: impossible to type passwd after locking, might be worth adding after a fix)<br>
 \- xfce4-appfinder <br>
 
