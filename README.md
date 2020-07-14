@@ -25,4 +25,5 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 
 # Nagging issues
 - window tearing with picom
+- whisker-menu getting tiled
 
