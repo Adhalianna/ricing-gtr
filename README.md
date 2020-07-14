@@ -23,6 +23,7 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 \- light-locker (bug: impossible to type passwd after locking, might be worth adding after a fix)<br>
 \- xfce4-appfinder <br>
 \- xfce4-notes-plugin <br>
+\- xfce4-sensors-plugin (will see if it comes in handy later)<br>
 \- emacs <br>
 
 
