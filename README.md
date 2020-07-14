@@ -7,6 +7,7 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 - design it for a laptop
 - make it stable within Manjaro xfce
 - make it look cool
+- make it so good that Windows will be too painful to work with on daily basis
 
 # Notes on packages
 \+ sxhkd <br>
