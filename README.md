@@ -1,6 +1,13 @@
 # ricing-gtr
 An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce version for a particular person moving to linux who likes GT-R cars.
 
+# Project goals
+- make as many idiot proof comments in configs as possible
+- make it comfortable to use
+- design it for a laptop
+- make it stable within Manjaro xfce
+- make it look cool
+
 # Notes on packages
 \+ sxhkd <br>
 \+ bspwm <br>
