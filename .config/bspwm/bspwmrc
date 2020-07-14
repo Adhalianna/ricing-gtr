@@ -1,0 +1,122 @@
+#! /bin/sh
+
+###Gaps and border settings
+export gap=8
+export monitor_gap=-4
+#for gap=8 and monitor_gap=-6 the distance of windows from monitor borders will be 2px
+#at least 1px must be left for xfce4-panel to work properly + the fixup at the bottom
+bspc config border_width 2
+
+###Desktop/workspace and monitor settings
+#Setup manually to make xfce4-panel workaround work
+export desktop_num=18
+#This command will list all available monitor outputs
+#xrandr -q | awk  '/D./ { print $1 }' 
+#change commands below to fit proper names if needed
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+bspc config window_gap $gap
+bspc config top_padding $monitor_gap
+bspc config left_padding $monitor_gap
+bspc config right_padding $monitor_gap
+bspc config bottom_padding $monitor_gap
+
+###Various settings
+bspc config gapless_monocle     false #Default setup uses negative padding, and gapless monocle looks really weird like that
+bspc config borderless_monocle  true
+bspc config single_monocle true
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config presel_feedback true
+bspc config ignore_ewmh_focus false
+bspc config ignore_ewmh_struts false
+bspc config initial_polarity first_child
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+###Honor size hints: do not make windows smaller than they wish to be
+bspc config honor_size_hints true 
+
+###Theming settings -- to be done
+export color1=#1ABB9B
+export color2=#222D32
+export color3=#1ABB9B
+bspc config focused_border_color "#1ABB9B"
+bspc config normal_border_color "#222D32"
+bspc config presel_feedback_color "#1ABB9B"
+#bspc config focused_border_color            "#1ABB9B"
+#bspc config active_border_color             "$brightblack"
+#bspc config normal_border_color             "$black"
+#bspc config urgent_border_color             "$blue"
+#bspc config presel_feedback_color           "$yellow"
+#bspc config focused_locked_border_color     "$brightred"
+#bspc config active_locked_border_color      "$red"
+#bspc config normal_locked_border_color      "$black"
+#bspc config focused_sticky_border_color     "$brightcyan"
+#bspc config active_sticky_border_color      "$cyan"
+#bspc config normal_sticky_border_color      "$black"
+#bspc config focused_private_border_color    "$brightblue"
+#bspc config active_private_border_color     "$blue"
+#bspc config normal_private_border_color     "$black"
+
+
+###Pointer and Focus
+bspc config focus_follows_pointer true
+#Some keybindings automatically enable and disable this setting
+bspc config pointer_follows_focus true 
+bspc config pointer_follows_monitor false
+
+###Settings for manual splitting
+bspc config split_ratio         0.52
+
+
+
+###Rules for window managing and positioning
+bspc rule --add  wrapper-2.0 layer=above manage=off state=floating border=off
+bspc rule --add  whiskermenu layer=above manage=off state=floating border=off
+bspc rule --add  'whisker menu' layer=above manage=off state=floating border=off
+bspc rule --add  albert layer=above manage=on state=floating center=on border=off
+bspc rule --add  xfce4-panel layer=above border=off manage=off state=floating private=on locked=on
+bspc rule --add  screenkey --unmanage
+bspc rule --add  gcolor2 state=floating center=true
+bspc rule --add  lxappearance state=floating center=true
+bspc rule --add  gmrun state=floating center=true
+bspc rule --add  lxterminal state=floating center=true sticky=true
+bspc rule --add  viewnior state=floating center=true
+bspc rule --add  file-roller state=floating center=true
+bspc rule --add  floaterm state=floating center=true
+bspc rule --add  spotify state=pseudo_tiled
+bspc rule --add  transmission-gtk state=pseudo_tiled
+bspc rule --add  conky sticky=on manage=off lower=on
+bspc rule --add  astime sticky=on
+bspc rule --add  yad state=floating
+bspc rule --add  Docky layer=above border=off manage=on
+bspc rule --add  Plank layer=above border=off manage=on
+bspc rule --add  wbar layer=above
+bspc rule --add  dockbarx layer=above
+bspc rule --add  google-chrome-unstable private=on
+bspc rule --add  google-chrome-stable private=on
+bspc rule --add  chromium private=on
+bspc rule --add  firefox private=on
+bspc rule --add  midori private=on
+bspc rule --add  gnome-pie border=off manage=off
+bspc rule --add  wpa_gui state=pseudo_tiled
+bspc rule --add  libreoffice state=tiled
+bspc rule --add  '*:libreofficedev' state=tiled
+bspc rule --add  '*:soffice' state=tiled
+bspc rule --add  9menu border=off manage=off
+bspc rule --add  tint2 border=off manage=off
+
+
+
+###Alter compton settings if using intel graphics
+GRAPHIC_CARD=$(lspci | grep -i "vga" | sed 's/.*://' | sed 's/(.*//' | sed 's/^[ \t]*//')
+if [[ $(echo $GRAPHIC_CARD | grep -i 'intel\|lenovo') != "" ]]; then MCODE='initrd=\intel-ucode.img'
+  sed -i 's/"xrender"/"glx"/' ~/.config/compton.conf
+  grep -q 'vsync = "opengl-swc";' ~/.config/compton.conf || echo 'vsync = "opengl-swc";' >> ~/.config/compton.conf
+fi
+
+###Fix bspwm not managing properly the xfce4-panel
+xdotool search --onlyvisible --class xfce4-panel behave %@ mouse-enter windowraise
