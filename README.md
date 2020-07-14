@@ -27,7 +27,7 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 # Nagging issues
 - window tearing with picom
 - whisker-menu getting tiled
-- neovim not launching from albert
+- neovim not launching from menu nor albert
 
 # Useful hacks achevied so far
 - dynamic bar behaviour of xfce4-bar (haven't seen anyone else doing this yet)
