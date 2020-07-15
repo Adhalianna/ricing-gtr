@@ -1,5 +1,5 @@
 # ricing-gtr
-An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce version for a particular person moving to linux who likes GT-R cars.
+An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce version for a particular person moving to linux who likes GT-R cars. Since there are many changes to packages, this more of an Manjaro-based OS plan rather than a simple rice.
 
 # Project goals
 - make as many idiot proof comments in configs as possible
@@ -20,6 +20,7 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 \+ xdotool (an important dependecy for a fix that makes xfce4-panel dynamic in bspwm session, personal recommendation over xdo and wmctrl) <br>
 \+ lutris <br>
 \+ redshift <br>
+\+ newsboat <br>
 \- light-locker (bug: impossible to type passwd after locking, might be worth adding after a fix)<br>
 \- xfce4-appfinder <br>
 \- xfce4-notes-plugin <br>
@@ -29,7 +30,6 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 
 
 # Nagging issues
-- window tearing with picom
 - whisker-menu getting tiled
 - neovim not launching from menu nor albert
 
