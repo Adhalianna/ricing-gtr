@@ -21,6 +21,8 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 \+ lutris <br>
 \+ redshift <br>
 \+ newsboat <br>
+\+ conky <br>
+\+ conky-manager <br>
 \- light-locker (bug: impossible to type passwd after locking, might be worth adding after a fix)<br>
 \- xfce4-appfinder <br>
 \- xfce4-notes-plugin <br>
