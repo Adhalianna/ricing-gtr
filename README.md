@@ -1,5 +1,5 @@
 # ricing-gtr
-An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce version for a particular person moving to linux who likes GT-R cars. Since there are many changes to packages, this more of an Manjaro-based OS plan rather than a simple rice.
+An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce version for a particular person moving to linux who likes GT-R cars. Since there are many changes in packages, this more of an Manjaro-based OS plan rather than a simple rice.
 
 # Project goals
 - make as many idiot proof comments in configs as possible
