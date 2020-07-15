@@ -22,7 +22,7 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 \+ redshift <br>
 \+ newsboat <br>
 \+ conky <br>
-\+ conky-manager <br>
+\+ conky-manager2-git <br>
 \- light-locker (bug: impossible to type passwd after locking, might be worth adding after a fix)<br>
 \- xfce4-appfinder <br>
 \- xfce4-notes-plugin <br>
@@ -37,4 +37,5 @@ An xfce + bspwm desktop (with two session to choose from) based on Manjaro xfce 
 
 # Useful hacks achevied so far
 - dynamic bar behaviour of xfce4-bar (haven't seen anyone else doing this yet)
+- conkies with desktop window type displayed properly in bspwm session
 
