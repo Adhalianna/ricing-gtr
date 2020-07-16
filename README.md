@@ -17,7 +17,7 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 \+ albert <br>
 \+ neovim <br>
 \+ code-oss <br>
-\+ compton (or rather picom but that is still the name of the package in manjaro repositories) <br>
+\+ picom-tryone <br>
 \+ xdotool (an important dependecy for a fix that makes xfce4-panel dynamic in bspwm session, personal recommendation over xdo and wmctrl) <br>
 \+ lutris <br>
 \+ redshift <br>
