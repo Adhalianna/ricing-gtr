@@ -19,7 +19,6 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 \+ code-oss <br>
 \+ picom-tryone <br>
 \+ xdotool (an important dependecy for a fix that makes xfce4-panel dynamic in bspwm session, personal recommendation over xdo and wmctrl) <br>
-\+ lutris <br>
 \+ redshift <br>
 \+ newsboat <br>
 \+ conky <br>
@@ -31,6 +30,10 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 \- xfce4-sensors-plugin (will see if it comes in handy later)<br>
 \- emacs <br>
 
+# To do
+- improve keybindings
+- create .local/share/gtksourceview-3.0/styles/style.xml, a fitting theme for mousepad
+- corrections to icons
 
 # Nagging issues
 - whisker-menu getting tiled
