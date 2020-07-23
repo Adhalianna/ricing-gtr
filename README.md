@@ -24,10 +24,12 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 \+ conky <br>
 \+ conky-manager2-git <br>
 \+ [desknamer](https://gitlab.com/jallbrit/desknamer) <br>
-\+ ttf-mononoki <br>
 \+ ttf-breeze-sans <br>
 \+ galculator <br>
 \+ playerctl <br>
+\+ nerd-fonts-mononoki <br>
+\+ nerd-fonts-mononoki <br>
+\+ ttf-nerd-fonts-symbols <br>
 \- light-locker (bug: impossible to type passwd after locking, might be worth adding after a fix)<br>
 \- xfce4-appfinder <br>
 \- xfce4-notes-plugin <br>
