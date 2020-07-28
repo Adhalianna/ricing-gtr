@@ -1,0 +1,8 @@
+git clone https://gitlab.com/jallbrit/desknamer /usr/share/desknamer
+chmod +x /usr/share/desknamer/desknamer.sh
+ln -s /usr/share/desknamer/desknamer.sh ~/.local/bin/desknamer
+mkdir -p ~/.config/desknamer
+cp /usr/share/desknamer/desknamer.json ~/.config/desknamer/desknamer.json
+
+
+

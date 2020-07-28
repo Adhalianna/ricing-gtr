@@ -1,0 +1,33 @@
+28.07.2020 
+mind the date, the procedures at https://console.developers.google.com/ might change
+
+dependencies:
+vdirsyncer
+orage
+a google account
+
+Configure vdirsyncer:
+create or copy to: ~/.config/vdirsyncer/config
+	pay attention to pairing and collections! more info can be found inside vdirsyncer manual
+	proposed setup: collections = ["yourmail@gmail.com"]
+	this will sync with the default calendar
+go to 'Orage calendar > File > Exchange files > Orage files' and change where orage calendar files are store to: ~/.config/orage/calendars/
+Do the same for archive files (requires creating a file): ~/.config/orage/calendars/orage_archive.ics
+enable CalDAV API for google calendar:
+	go to: https://console.developers.google.com/
+	create a new project
+	go to library of APIs and find CalDAV API
+	enable
+	being on the page of CalDAV API look for "create creditentials" (dane logowania) and click
+	make sure you  will be creating "OAuth" creditentials
+	create for native/computer/pc application or sth like that, and choose any name for OAuth client
+	congrats! you should have both client_id and client_secret available at the moment
+run: vdirsyncer discover calendar
+this will list available calendars on both sides and pair calendars specified in collections section of config file
+run: vdirsyncer sync
+a file with name "yourmail@gmail.com" should appear in ~/.config/orage/calendars/
+go to 'Orage calendar > File > Exchange files > Foreign files', uncheck "Read only" and add the yourmail@gmail.com calendar from the directory
+FINALLY: setup a serivce that periodically runs `vdirsyncer sync` and done! (can be done e.g. through cronie, available by default at Manjaro)
+Sadly, you will need to always pay attention to which calendar you add through orage, it forces its default calendar on new file creation
+
+
