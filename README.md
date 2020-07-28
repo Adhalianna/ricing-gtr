@@ -20,7 +20,7 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 \+ galculator <br>
 \+ ncmpcpp <br>
 \+ playerctl <br>
-\+ mopidy (mpris, soundcloud, spotify) <br>
+\+ mopidy (mpd, local, mpris, soundcloud, spotify) <br>
 \+ mopidy <br>
 \+ nerd-fonts-mononoki <br>
 \+ ttf-nerd-fonts-symbols <br>
