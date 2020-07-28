@@ -1,0 +1,111 @@
+# window
+startup_screen = playlist
+window_border_color = "blue"
+active_window_border = "blue"
+enable_window_title = yes
+
+# colors
+color1 = "blue"
+color2 = "cyan"
+state_flags_color = "yellow"
+state_line_color =  "blue"
+main_window_color = "white"
+volume_color =  "black"
+header_window_color = "white"
+statusbar_color = "red"
+statusbar_time_color = "black"
+player_state_color = "yellow"
+alternative_ui_separator_color = "black"
+empty_tag_color = "blue"
+
+# mpd
+mpd_host = "127.0.0.1"
+mpd_port = 6600
+mpd_music_dir = ~/Music
+
+# notifications
+execute_on_song_change = notify-send --urgency low "Now Playing" "$(ncmpcpp -q --current-song='\n<b><i>%a - %t</i></b>\n<i>{%b}</i>{, %y}\n\n{track: %N, }length: <b>%l</b>{\n%100C}')"
+
+# visualizer
+visualizer_fifo_path = "/tmp/mpd.fifo"
+visualizer_sync_interval = 15
+visualizer_in_stereo = no
+visualizer_type = "wave"
+visualizer_look = "┃┃"
+
+# lyrics
+lyrics_directory = ~/Music/Lyrics
+fetch_lyrics_for_current_song_in_background = yes
+external_editor = nvim
+use_console_editor = yes
+store_lyrics_in_song_dir = no
+follow_now_playing_lyrics = yes
+
+# header
+header_visibility = no
+header_text_scrolling = yes
+alternative_header_first_line_format = "{$b$5%t$9$/b}"
+alternative_header_second_line_format ="$8{%a} $b$1⏩$9$/b {%b}$9"
+
+# playlist view
+jump_to_now_playing_song_at_start = yes
+titles_visibility = no
+now_playing_prefix = "$b$2⯈$9$4⯈$9 $u$4"
+now_playing_suffix = "$4$/u$9$/b"
+playlist_display_mode = "columns"
+song_columns_list_format = "(28)[white]{aE} (28)[yellow]{tE} (28)[red]{bE} (8)[black]{lr}"
+playlist_editor_display_mode = "columns"
+
+# selectors
+current_item_prefix = "$b$1⯈$9$/b$b$8"
+current_item_suffix = "$8$/b$9"
+current_item_inactive_column_prefix = "$b$8⯈$9$/b$5"
+current_item_inactive_column_suffix = "$5$9"
+selected_item_prefix = "$b$8⯈⯈$9$/b$u$5"
+selected_item_suffix = "$5$/u$9"
+
+
+# progressbar
+progressbar_look = "━⏩━"
+progressbar_color = "blue"
+progressbar_elapsed_color = "red"
+
+# statusbar
+playlist_show_remaining_time = yes
+playlist_shorten_total_times = yes
+display_volume_level = yes
+song_status_format = "$1⏩ $9{$7%a} {$1⏩$9 $b$7%b$/b}"
+
+# browser
+browser_playlist_prefix = "$5⯈$9$7⯈ $0"
+browser_sort_mode = "name"
+regular_expressions = "extended"
+browser_sort_format = "{%a - }{%t}|{%f} {(%l)}"
+ignore_leading_the = yes
+ignore_diacritics = yes
+search_engine_display_mode = "columns"
+browser_display_mode = "columns"
+
+# library
+allow_for_physical_item_deletion = no
+song_library_format = "{%n - }{%t}|{%f}{ - $8%a$9}"
+
+# tag editor
+empty_tag_marker = "⎽⎽⎽"
+modified_item_prefix = "$2⯈$9 "
+show_duplicate_tags = no
+
+# various
+display_bitrate = yes
+clock_display_seconds = no
+data_fetching_delay = yes
+volume_change_step = 10
+
+# global
+colors_enabled = yes
+cyclic_scrolling = yes
+autocenter_mode = yes
+centered_cursor = yes
+mouse_support = yes
+mouse_list_scroll_whole_page = no
+user_interface = alternative
