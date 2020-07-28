@@ -10,7 +10,7 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 \+ neovim <br>
 \+ code-oss <br>
 \+ picom-tryone <br>
-\+ xdotool (an important dependecy for a fix that makes xfce4-panel dynamic in bspwm session, personal recommendation over xdo and wmctrl) <br>
+\+ xdotool (important dependency for some hacks in bspwm) <br>
 \+ redshift <br>
 \+ newsboat <br>
 \+ conky <br>
