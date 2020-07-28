@@ -2,14 +2,6 @@
 An xfce + bspwm desktop (with two sessions to choose from) based on Manjaro xfce version for a particular person moving to linux who likes Nissan GT-R cars. 
 The project focuses on workflow mostly and features some hacks for bspwm.
 
-# Project goals
-- make as many idiot proof comments in configs as possible
-- make it comfortable to use
-- design it for a laptop
-- make it stable within Manjaro xfce
-- make it look cool
-- make it so good that Windows will be too painful to work with on daily basis
-
 # Notes on packages
 \+ sxhkd <br>
 \+ bspwm <br>
@@ -26,8 +18,10 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 \+ [desknamer](https://gitlab.com/jallbrit/desknamer) <br>
 \+ ttf-breeze-sans <br>
 \+ galculator <br>
+\+ ncmpcpp <br>
 \+ playerctl <br>
-\+ nerd-fonts-mononoki <br>
+\+ mopidy (mpris, soundcloud, ) <br>
+\+ mopidy <br>
 \+ nerd-fonts-mononoki <br>
 \+ ttf-nerd-fonts-symbols <br>
 \- light-locker (bug: impossible to type passwd after locking, might be worth adding after a fix)<br>
@@ -40,14 +34,13 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 
 # To do
 - improve keybindings
-- create .local/share/gtksourceview-3.0/styles/style.xml, a fitting theme for mousepad
+- work on newsboat
+- work on conkies
+- optional: write a whole program/script to make xfce4-panel's contents more dynamic
 - corrections to icons
+- theme switcher
+- uploading themes
+- create an icon to replace manjaros icon for whiskermenu
 
 # Nagging issues
-- whisker-menu getting tiled
-- neovim not launching from menu nor albert
-
-# Useful hacks achevied so far
-- dynamic bar behaviour of xfce4-bar (haven't seen anyone else doing this yet)
-- conkies with desktop window type displayed properly in bspwm session
 
