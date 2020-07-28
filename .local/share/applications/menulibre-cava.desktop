@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Cava
+GenericName=Music visualizer
+Comment=A music visualizer running in terminal
+Icon=applications-multimedia
+Exec=alacritty --class Cava,Cava -e cava
+Actions=
+Categories=AudioVideo;
+Keywords=cava;vizualizer;terminal app;
+StartupWMClass=Cava
