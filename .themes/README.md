@@ -1,1 +1,1 @@
-The themese were generated from [vimix source](https://github.com/vinceliuice/vimix-gtk-themes) createdn by [vinceliuice](https://vinceliuice.github.io/).
+The themese were generated from [vimix theme source](https://github.com/vinceliuice/vimix-gtk-themes) created by [vinceliuice](https://vinceliuice.github.io/).
