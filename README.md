@@ -24,6 +24,7 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 \+ mopidy <br>
 \+ nerd-fonts-mononoki <br>
 \+ ttf-nerd-fonts-symbols <br>
+\+ vdirsyncer <br>
 \- light-locker (bug: impossible to type passwd after locking, might be worth adding after a fix)<br>
 \- xfce4-appfinder <br>
 \- xfce4-notes-plugin <br>
