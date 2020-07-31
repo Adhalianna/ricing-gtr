@@ -21,7 +21,6 @@ The project focuses on workflow mostly and features some hacks for bspwm.
 \+ ncmpcpp <br>
 \+ playerctl <br>
 \+ mopidy (mpd, local, mpris, soundcloud, spotify) <br>
-\+ mopidy <br>
 \+ nerd-fonts-mononoki <br>
 \+ ttf-nerd-fonts-symbols <br>
 \+ vdirsyncer <br>
