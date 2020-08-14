@@ -1,35 +1,183 @@
-######################################################################
+﻿######################################################################
 #                                                                    #
-#  Use this file for managing bspwm solely unless a specific effect  #
-#  cannot be achieved with xfce4 shortcuts application.              #
-#                                                                    #
-#  It is alright for shortcuts of xfce4wm to conflict with the       #
-#  configuration in this file but no other conflicts should occur.   #
+#  Both global and WM specific key bindings are to be defined in     #
+#  this file. Do not add any bindings through xfce keyboard          #
+#  settings. This would cause conflict and only xfce bindings would  #  
+#  work.                                                             #
 #                                                                    #
 #  Remember that lines that have key config and command hashed are   #
 #  inactive and will not work.                                       #
+#                                                                    #
+#  If on Mousepad change to Document > Filetype > Script > sh        #
+#  for better readability.                                           #
+#                                                                    #
+#  To find out names of available keys, e.g. some media keys,        #
+#  run command "xmodmap -pk". It should be possible to assign        #
+#  bindings to mod keys on specific sides but that has not been      #
+#  tested.                                                           #
+#                                                                    #
+#  For some keynames case matters!                                   #
 #--------------------------------------------------------------------#
 #  Some general conventions worth following:                         #
 #  * commonly used window key bindings: super + key                  #
 #  * special window key bindings: super + shift + key                #
-#  * desktop navigation: super + ctrl + key                          #
+#  * desktop navigation and operations: super + ctrl + key           #
 #                                                                    #
 ######################################################################
 
 
-# Bspwm program managing
+######################################################################
+#                        Global key bindings                         #
+######################################################################
+
+# Application launching
 # _____________
 
-## Cleanly quit bspwm
-# super + shift + ctrl + q
-#	bspc quit 
+## Bring Albert on/off screen
+super + a
+	albert toggle
+
+## Bring Whiskermenu on/off screen
+super + s
+	xfce4-popup-whiskermenu
+
+## Open terminal window
+super + Return
+	exo-open --launch TerminalEmulator
+
+## Open web browser
+super + F1
+	exo-open --launch WebBrowser
+
+## Open file manager
+super + F2
+	exo-open --launch FileManager
+
+## Open mail reader
+super + F3
+	exo-open --launch MailReader
+
+
+# Screenshotting
+# _____________
+
+## Make a screenshot with dialog window
+Print
+	xfce4-screenshooter
+
+## Make a screenshot of entire screen and copy to clipboard
+Print + ctrl
+	xfce4-screenshooter -cf
+
+## Make a screenshot of a region and copy to clipboard
+Print + shift
+	xfce4-screenshooter -rc
+
+# Settings launching and switching
+# _____________
+
+## Launch display settings
+super + p
+	xfce4-display-settings --minimal
+
+## Open this file in mousepad
+super + F12
+	mousepad ${HOME}/.config/sxhkd/sxhkdrc
+
+## Turn on/off compositing by picom
+super + ctrl + space
+	{pkill picom ,\
+	picom -b --experimental-backends }
+
+
+# Media keys (some keyboards have those, often availble through "fn" button)
+# ______________
+
+XF86AudioRaiseVolume
+	pulseaudio-ctl up
+
+XF86AudioLowerVolume
+	pulseaudio-ctl down
+
+XF86AudioMute
+	pulseaudio-ctl mute
+
+XF86AudioMicMute
+	pulseaudio-ctl mute-input
+
+XF86AudioPlay
+	playerctl play
+
+XF86AudioPause
+	playerctl pause
+
+XF86AudioNext
+	playerctl next
+
+XF86AudioPrev
+	playerctl previous
+	
+XF86MonBrightnessDown
+	xbacklight -dec 10
+
+XF86MonBrightnessUp
+	xbacklight -inc 10
+
+XF86Sleep
+	systemctl suspend
+
+XF86WWW
+	exo-open --launch WebBrowser
+
+XF86Explorer
+	exo-open --launch FileManager ${HOME}
+
+XF86Documents
+	exo-open --launch FileManager ${HOME}/Documents
+
+# This one command might not work at all, had no way to test it while writing
+XF86Bluetooth
+	bluetooth
+
+XF86Mail
+	exo-open --launch MailReader
+
+XF86Calculator
+	galculator
+
+Help
+	exo-open --launch FileManager ${HOME}/.config/Helper.md
+
+XF86ScreenSaver
+	xflock4
+
+XF86TaskPane
+	alacritty -e htop
+
+XF86AudioPreset
+	pulseaudio-ctl set 50
+
+XF86Display
+	xfce4-display-settings --minimal
+
+XF86Messenger
+	pidgin
+
+XF86Game
+	lutris
+
+
+
+######################################################################
+#                         BSPWM key bindings                         #
+######################################################################
 
 
 # Single window manipulation
 # ______________
 
 ## Close window
-super + shift + q
+super + q
 	bspc node --close
 
 ## Close window (alternate)
@@ -42,7 +190,11 @@ super + shift + k
 
 ## Toggle tiling mode of window
 super + t
-	bspc node -t {pseudo_tiled,tiled}
+	bspc node -t {tiled,pseudo_tiled,floating}
+
+## Toggle tiling/floating
+super + w
+	bspc node -t {floating,tiled}
 	
 ## Toggle fullscreen
 super + f 
@@ -57,40 +209,43 @@ super + shift + x
 	bspc node -g locked 
 
 ## Try to keep size and position of the selected window
-# super + o
-#	bspc node -g private
+super + o
+	bspc node -g private
+
+## Insert receptacle (empty tile for window)
+super + 
 
 
 # Global windows manipulation
 # ______________
 
-## Force all windows of the desktop to tile
-super + ctrl + t
-	bspcp tile
+## Force all windows of the desktop to float    #The command needs fixing!
+#super + ctrl + t
+#	bspcp desktop -t floating
 
-## Force all windows of the desktop to float and arrange them
-super + ctrl + shift + t
-	bspcp float
+## Force all windows of the desktop to tile     #The command needs fixing!
+#super + ctrl + shift + t
+#	bspcp desktop -t floating
 
-## Remove all receptacles (empty window
+## Remove all receptacles (empty tiles)
 super + shift + BackSpace
-  for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
+	for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
 
 
 # Window moving and splitting
 # ______________    
 	
 ## Preselect window for splitting in certain direction
-super + ctrl + {a,s,w,d}
+super + alt + {a,s,w,d}
 	bspc node -p \~{west,south,north,east} -i
 
 ## Preselect window for splitting in certain direction
-super + ctrl + {Left,Down,Up,Right}
+super + alt + {Left,Down,Up,Right}
 	bspc node -p \~{west,south,north,east}
 
-## Preselect the desktop for splitting in certain direction
-super + shift + {Left,Down,Up,Right}
-	bspc node @/ -p \~{west,south,north,east}
+## Preselect the desktop for splitting in certain direction  #Weird, hard to understand behaviour!
+#super + shift + {Left,Down,Up,Right}
+#	bspc node @/ -p \~{west,south,north,east}
 
 ## Create a new "master area", splitting the whole desktop instead of just windows.
 super + shift + w
@@ -106,8 +261,11 @@ super + {_,shift + }{1-9,0}
 
 
 
-# Window cycling and juggling
+# Window selecting and juggling
 # _____________
+
+## Select window on the specified side of currently focused one
+super + 
 
 ## Circulate the leaves of the tree
 super + shift + c
@@ -117,7 +275,7 @@ super + shift + c
 super + z
 	bspc node -s biggest
 
-## Cycle windows
+## Cycle through windows
 alt + {_,shift + }Tab
     bspc node -f {next,prev}
 
@@ -129,11 +287,10 @@ alt + {_,shift + }Tab
 super + {m,n}
 	bspc desktop -f {prev, next} 
 
-## Select previous / next desktop (alternate)
+## Select previous / next desktop that has windows opened
 super + ctrl + {Left, Right}
 	bspc desktop -f {prev.occupied,next.occupied} 
 
-## Select previous / next desktop (alternate)
 super + ctrl + {Up, Down}
 	bspc desktop -f {prev.occupied,next.occupied} 
 
@@ -142,25 +299,25 @@ super + ctrl + {Up, Down}
 # Layout manipulation/desktop level controls
 # ______________
 
-# Toggle monocle mode
+## Toggle monocle mode
 super + l 
 	bspc desktop -l next
 	
-# Balance tree
+## Balance tree
 super + b
 	bspc node @/ -B
 
-# Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
+## Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
 super + alt + b
 	bspc node @brother -B
 	
-# Undo balancing (equalize windows)
+## Undo balancing (equalize windows)
 super + ctrl + b
 	bspc node @/ -E
 
-# Toggle automatic balancing of windows
-super + shift + b
-	euclid_balancer
+## Toggle automatic balancing of windows    #A script needs to be written first!
+# super + shift + b
+#	some-shell-script-with-many-bspc-commands
 
 # Mirror and flip leaves of tree
 super + {comma,period}
@@ -171,10 +328,6 @@ super + shift + {comma,period}
 	bspc node @/ -R {90,270}
 
 # Change window gap
-
-super + g
-	bspc config -d focused window_gap {$gap,$(($gap+$gap)),$(($gap+$gap+$gap))}
-
 super + button{4,5}
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
 
@@ -194,28 +347,6 @@ super + button{4,5}
 @button8
 	albert toggle
 
-# Media keys (some keyboards have it)
-# ______________
-
-XF86AudioRaiseVolume
-	volume up
-
-XF86AudioLowerVolume
-	volume down
-
-XF86AudioMute
-	volume mute
-	
-XF86MonBrightnessDown
-	light -U 5 
-
-XF86MonBrightnessUp
-	light -A 5
-
-XF86Sleep
-	systemctl suspend
-
-
 # Other utilities
 # ______________
 
@@ -223,12 +354,14 @@ XF86Sleep
 super + shift + Escape
 	pkill -USR1 -x sxhkd
 
+## Cleanly quit bspwm
+super + shift + ctrl + q
+	bspc quit 
+
 ## To open bspwm program in case bspwmrc fails to execute/you have plugged in a new monitor
 super + shift + r
 	bspwmrc
 
-## Toggle compositing
-super + ctrl + space
-	{pkill picom ,\
-	picom -b }
+
+
 
