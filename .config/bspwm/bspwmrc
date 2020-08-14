@@ -1,7 +1,10 @@
 #! /bin/sh
 
+###Launch picom
+picom --experimental-backends &
+
 ###Gaps and border settings
-export gap=8
+export gap=16
 export monitor_gap=-4
 #for gap=8 and monitor_gap=-6 the distance of windows from monitor borders will be 2px
 #at least 1px must be left for xfce4-panel to work properly + the fixup at the bottom
@@ -22,8 +25,8 @@ bspc config right_padding $monitor_gap
 bspc config bottom_padding $monitor_gap
 
 ###Various settings
-bspc config gapless_monocle     false #Default setup uses negative padding, and gapless monocle looks really weird like that
-bspc config borderless_monocle  true
+bspc config gapless_monocle  false #Default setup uses negative padding, and gapless monocle looks really weird like that
+bspc config borderless_monocle  false
 bspc config single_monocle true
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
@@ -39,13 +42,10 @@ bspc config pointer_action3 resize_corner
 ###Honor size hints: do not make windows smaller than they wish to be
 bspc config honor_size_hints true 
 
-###Theming settings -- to be done
-export color1=#1ABB9B
-export color2=#222D32
-export color3=#1ABB9B
-bspc config focused_border_color "#1ABB9B"
+###Theming settings
+bspc config focused_border_color "#0598DB"
 bspc config normal_border_color "#222D32"
-bspc config presel_feedback_color "#1ABB9B"
+bspc config presel_feedback_color "#003175"
 #bspc config focused_border_color            "#1ABB9B"
 #bspc config active_border_color             "$brightblack"
 #bspc config normal_border_color             "$black"
@@ -65,7 +65,7 @@ bspc config presel_feedback_color "#1ABB9B"
 ###Pointer and Focus
 bspc config focus_follows_pointer true
 #Some keybindings automatically enable and disable this setting
-bspc config pointer_follows_focus true 
+bspc config pointer_follows_focus false
 bspc config pointer_follows_monitor false
 
 ###Settings for manual splitting
@@ -74,22 +74,26 @@ bspc config split_ratio         0.52
 
 
 ###Rules for window managing and positioning
-bspc rule --add  wrapper-2.0 layer=above manage=off state=floating border=off
-bspc rule --add  whiskermenu layer=above manage=off state=floating border=off
-bspc rule --add  'whisker menu' layer=above manage=off state=floating border=off
-bspc rule --add  albert layer=above manage=on state=floating center=on border=off
-bspc rule --add  xfce4-panel layer=above border=off manage=off state=floating private=on locked=on
+bspc rule --add  "Wrapper-2.0" manage=on layer=above state=floating private=on border=off #This one is responsible for Whiskermenu
+bspc rule --add  Orage state=floating private=on
+bspc rule --add  albert layer=above state=floating center=on border=off
+bspc rule --add  "Xfce4-panel" layer=above border=off manage=off state=floating private=on locked=on
+bspc rule --add  "Xfce4-panel:Panel Preferences" state=floating
+bspc rule --add  "Xfce4-taskmanager" state=pseudo_tiled
 bspc rule --add  screenkey --unmanage
-bspc rule --add  gcolor2 state=floating center=true
-bspc rule --add  lxappearance state=floating center=true
-bspc rule --add  gmrun state=floating center=true
-bspc rule --add  lxterminal state=floating center=true sticky=true
-bspc rule --add  viewnior state=floating center=true
-bspc rule --add  file-roller state=floating center=true
-bspc rule --add  floaterm state=floating center=true
-bspc rule --add  spotify state=pseudo_tiled
+bspc rule --add  Ncmpcpp state=floating private=on
+bspc rule --add  Cava state=floating private=on
+bspc rule --add  gcolor2 state=floating center=on
+bspc rule --add  Gpick state=floating
+bspc rule --add  lxappearance state=floating center=on
+bspc rule --add  gmrun state=floating center=on
+bspc rule --add  lxterminal state=floating center=on sticky=on
+bspc rule --add  Viewnior state=floating center=on
+bspc rule --add  file-roller state=floating center=on
+bspc rule --add  floaterm state=floating center=on
+bspc rule --add  Spotify state=pseudo_tiled
 bspc rule --add  transmission-gtk state=pseudo_tiled
-bspc rule --add  conky sticky=on manage=off lower=on
+bspc rule --add  conky sticky=on manage=off layer=below border=off
 bspc rule --add  astime sticky=on
 bspc rule --add  yad state=floating
 bspc rule --add  Docky layer=above border=off manage=on
@@ -108,15 +112,18 @@ bspc rule --add  '*:libreofficedev' state=tiled
 bspc rule --add  '*:soffice' state=tiled
 bspc rule --add  9menu border=off manage=off
 bspc rule --add  tint2 border=off manage=off
+bspc rule --add  Xfce4-taskmanager floating=on
 
+###Launch conkies and place them below desktop 
+#for some reason setting their window type as desktop makes them being drawn below actual desktop which is xfdesktop
+#to make them work properly they must be raised (windowraise) before any application is turned on
+sleep 3
+xdotool search --class conky windowraise %@
 
-
-###Alter compton settings if using intel graphics
-GRAPHIC_CARD=$(lspci | grep -i "vga" | sed 's/.*://' | sed 's/(.*//' | sed 's/^[ \t]*//')
-if [[ $(echo $GRAPHIC_CARD | grep -i 'intel\|lenovo') != "" ]]; then MCODE='initrd=\intel-ucode.img'
-  sed -i 's/"xrender"/"glx"/' ~/.config/compton.conf
-  grep -q 'vsync = "opengl-swc";' ~/.config/compton.conf || echo 'vsync = "opengl-swc";' >> ~/.config/compton.conf
-fi
 
 ###Fix bspwm not managing properly the xfce4-panel
-xdotool search --onlyvisible --class xfce4-panel behave %@ mouse-enter windowraise
+xdotool search --onlyvisible --class xfce4-panel behave %@ mouse-enter windowraise &
+
+###Launch desknamer
+desknamer &
+
