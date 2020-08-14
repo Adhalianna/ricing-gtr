@@ -1,0 +1,4 @@
+# GUI, TUI, CLI
+- GUI - Graphical User Interface, this is what Desktop Environments and most apps aim to provide. It is achieved by use of such libraries as GTK, QT and many other.
+- TUI - Terminal User Interface, TUI apps can be used inside terminal which makes them more portable and light on resources (in most cases, but you can still lag or freeze your computer with those which is why GPU accelerated terminal emulators such as Alacritty exist). Some even allow use of mouse pointer, a great example is __htop__, one of most popular linux apps. 
+- CLI - Commandline Interface, the most minimal interface for an app that can be provided. You can find apps for which a GUI is just a wrapper for an existing CLI. The only way to control CLI apps is to type in terminal. Altough they seem intimidating for a begginer, many amazing yet small tools have CLI only.
