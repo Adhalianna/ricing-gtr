@@ -243,7 +243,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 5
 
@@ -304,7 +304,7 @@ selection:
   # clipboard.
   save_to_clipboard: false
 
-dynamic_title: true
+window.dynamic_title: true
 
 cursor:
   # Cursor style
@@ -517,4 +517,5 @@ key_bindings:
   - { key: F10,      mods: Super,   chars: "\x1b[21;3~"                  }
   - { key: F11,      mods: Super,   chars: "\x1b[23;3~"                  }
   - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                  }
+
 
