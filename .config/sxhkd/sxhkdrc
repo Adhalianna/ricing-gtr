@@ -30,6 +30,7 @@
 #                        Global key bindings                         #
 ######################################################################
 
+
 # Application launching
 # _____________
 
@@ -72,6 +73,7 @@ Print + ctrl
 ## Make a screenshot of a region and copy to clipboard
 Print + shift
 	xfce4-screenshooter -rc
+
 
 # Settings launching and switching
 # _____________
@@ -190,7 +192,7 @@ super + shift + k
 
 ## Toggle tiling mode of window
 super + t
-	bspc node -t {tiled,pseudo_tiled,floating}
+	bspc node -t {tiled,pseudo_tiled}
 
 ## Toggle tiling/floating
 super + w
@@ -213,22 +215,27 @@ super + o
 	bspc node -g private
 
 ## Insert receptacle (empty tile for window)
-super + 
+super + d
+	bspc node -i
+
+## Hide window
+super + e
+	bspc node -g hidden
 
 
 # Global windows manipulation
 # ______________
 
 ## Force all windows of the desktop to float    #The command needs fixing!
-#super + ctrl + t
-#	bspcp desktop -t floating
+super + ctrl + w
+	for i in $(bspc query -N -d focused); do bspc node $i -t floating; done
 
 ## Force all windows of the desktop to tile     #The command needs fixing!
-#super + ctrl + shift + t
-#	bspcp desktop -t floating
+super + ctrl + shift + w
+	for i in $(bspc query -N -d focused); do bspc node $i -t tiled; done
 
 ## Remove all receptacles (empty tiles)
-super + shift + BackSpace
+super + ctrl + d
 	for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
 
 
@@ -243,29 +250,32 @@ super + alt + {a,s,w,d}
 super + alt + {Left,Down,Up,Right}
 	bspc node -p \~{west,south,north,east}
 
-## Preselect the desktop for splitting in certain direction  #Weird, hard to understand behaviour!
-#super + shift + {Left,Down,Up,Right}
-#	bspc node @/ -p \~{west,south,north,east}
-
 ## Create a new "master area", splitting the whole desktop instead of just windows.
-super + shift + w
+super + shift + a
 	bspc node -n @/
 	
 ## Go to desktop or move focused to desktop if shift is pressed
 super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} ^{1-9,10}
+	bspc {desktop -f,node -d} ^{1-9,10}
+
+## Swap focused window with neighbouing window
+super + shift + {Left,Down,Up,Right}
+	bspc node -s {west,south,north,east}
 
 
 # Window resizing
 # _____________
 
-
+## Resize focused window
+super + {bracketleft,bracketright}
+	bspc node focused --resize bottom_right {5 5, -5 -5}; bspc node focused --resize top_left {5 5, -5 -5}; 
 
 # Window selecting and juggling
 # _____________
 
 ## Select window on the specified side of currently focused one
-super + 
+super + {Left,Down,Up,Right}
+	bspc node -f {west,south,north,east}
 
 ## Circulate the leaves of the tree
 super + shift + c
@@ -294,7 +304,6 @@ super + ctrl + {Left, Right}
 super + ctrl + {Up, Down}
 	bspc desktop -f {prev.occupied,next.occupied} 
 
-	
 
 # Layout manipulation/desktop level controls
 # ______________
@@ -307,7 +316,7 @@ super + l
 super + b
 	bspc node @/ -B
 
-## Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
+## Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.  # Not sure actually what this does, it was there in deafault Manjaro BSPWM config, fill free to unbind it
 super + alt + b
 	bspc node @brother -B
 	
@@ -315,19 +324,15 @@ super + alt + b
 super + ctrl + b
 	bspc node @/ -E
 
-## Toggle automatic balancing of windows    #A script needs to be written first!
-# super + shift + b
-#	some-shell-script-with-many-bspc-commands
-
-# Mirror and flip leaves of tree
+## Mirror and flip leaves of tree
 super + {comma,period}
 	bspc node @/ -F {horizontal,vertical}
 	
-# Rotate leaves of tree
+## Rotate leaves of tree
 super + shift + {comma,period}
 	bspc node @/ -R {90,270}
 
-# Change window gap
+## Change window gap
 super + button{4,5}
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
 
@@ -358,10 +363,7 @@ super + shift + Escape
 super + shift + ctrl + q
 	bspc quit 
 
-## To open bspwm program in case bspwmrc fails to execute/you have plugged in a new monitor
+## To open bspwm program in case bspwmrc fails to execute/you want to restart it
 super + shift + r
 	bspwmrc
-
-
-
 
