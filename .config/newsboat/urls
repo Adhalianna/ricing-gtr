@@ -1,0 +1,5 @@
+"query:Unread Articles:unread = \"yes\""
+"query:Today's news:age = 0"
+
+http://feeds.feedburner.com/speedhunters	 "~Speedhunters" cars blog
+https://www.autosport.com/rss/feed/f1	"~Formula1 news on autosport.com" sport cars F1 Formula1 racing autosport
