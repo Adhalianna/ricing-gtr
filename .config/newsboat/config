@@ -1,0 +1,27 @@
+color article white black
+color info green default
+color listnormal_unread white default
+color listfocus green black
+color listfocus_unread black green standout bold
+
+auto-reload yes
+reload-threads 4
+download-retries 4
+cleanup-on-quit yes
+refresh-on-startup yes
+prepopulate-query-feeds yes
+max-download-speed 100
+max-items 100
+
+notify-always yes
+notify-format "Newsboat: %n unread articles within %f unread feeds"
+notify-program notify-send
+notify-xterm yes
+notify-screen yes
+
+feedlist-format    "%3i  %n %2U  %t"
+articlelist-format "%4i  %D %?T? %-20T ?  %t"
+show-keymap-hint yes
+wrap-scroll yes
+
+keep-articles-days 14
