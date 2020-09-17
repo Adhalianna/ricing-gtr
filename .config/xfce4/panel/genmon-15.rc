@@ -1,6 +1,0 @@
-Command=/home/ricing/.config/xfce4/panel/scripts/mpris-controls.sh
-UseLabel=0
-Text=(genmon)
-UpdatePeriod=3000
-Font=mononoki Nerd Font 12
-
