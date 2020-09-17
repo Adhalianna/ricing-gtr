@@ -1,0 +1,12 @@
+# Command logfile created by Lynx 2.8.9rel.1 (08 Jul 2018)
+# Arg0 = lynx
+# Arg1 = -cmd-log=~/.config/mopidy/alamrclock-lynx-autoset
+# Arg2 = http://localhost:6680/alarmclock/
+key Down Arrow
+key Down Arrow
+key Down Arrow
+key Down Arrow
+key Down Arrow
+key ^J
+key Q
+exit
