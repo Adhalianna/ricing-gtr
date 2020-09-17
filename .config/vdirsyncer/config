@@ -4,7 +4,7 @@ status_path = "~/.config/vdirsyncer/status/"
 [pair calendar]
 a = "google_calendar"
 b = "local_calendar"
-collections = ["YOURMAIL@gmail.com"]
+collections = [" COLLECTION NAME "]
 metadata = ["color"]
 
 [storage local_calendar]
@@ -14,5 +14,5 @@ path = "~/.config/orage/calendars/%s.ics"
 [storage google_calendar]
 type = "google_calendar"
 token_file = "~/.config/vdirsyncer/google_token"
-client_id = "FOLLOW INSTALL NOTE GCALENDAR ORAGE SYNC TO OBTAIN"
-client_secret = "FOLLOW INSTALL NOTE GCALENDAR ORAGE SYNC TO OBTAIN"
+client_id = " ID "
+client_secret = " SECRET "
