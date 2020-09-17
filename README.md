@@ -24,5 +24,5 @@
 - orage
 - papirus icons
 
-custom theme based on vimix was used in configs, in particualr in theme-changer.sh script
-
+# To do
+make installing script
