@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# This command is supposed to by run by cron.
+# The 'lynx-autoset' file cannot be changed unless the alaramclock extension's web interface changed. If so, use `lynx -cmd-log="~/.config/mopidy/alamrclock-lynx-autoset" http://localhost:6680/alarmclock/`, navigate to "Submit" or equivalent button, press enter or equivalent and finally press 'Q' to exit. This should be sufficient to automate the process
+
+if pgrep mopidy status > /dev/null
+then
+	lynx -cmd-script="~/.config/mopidy/alamrclock-lynx-autoset" http://localhost:6680/alarmclock/
+fi
+exit
