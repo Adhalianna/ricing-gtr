@@ -1,5 +1,6 @@
 # Dependencies
 - xfce4-panel
+- xfce4-panel genmon plugin
 - xfconf-query
 - xfdesktop
 - sxhkd 
