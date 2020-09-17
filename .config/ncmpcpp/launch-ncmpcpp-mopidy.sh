@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-mopidy &
+pkill -9 mopidy
+mopidy local scan
+mopidy --config ~/.config/mopidy/mopidy.conf &
 mkfifo /tmp/mpd.fifo
 while : 
 	do
