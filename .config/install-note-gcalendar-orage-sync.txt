@@ -25,9 +25,11 @@ enable CalDAV API for google calendar:
 run: vdirsyncer discover calendar
 this will list available calendars on both sides and pair calendars specified in collections section of config file
 run: vdirsyncer sync
-a file with name "yourmail@gmail.com" should appear in ~/.config/orage/calendars/
-go to 'Orage calendar > File > Exchange files > Foreign files', uncheck "Read only" and add the yourmail@gmail.com calendar from the directory
-FINALLY: setup a serivce that periodically runs `vdirsyncer sync` and done! (can be done e.g. through cronie, available by default at Manjaro)
-Sadly, you will need to always pay attention to which calendar you add through orage, it forces its default calendar on new file creation
 
+#  a file with name "yourmail@gmail.com" should appear in ~/.config/orage/calendars/
+#  go to 'Orage calendar > File > Exchange files > Foreign files', uncheck "Read only" and add the yourmail@gmail.com calendar from the directory
+#  FINALLY: setup a serivce that periodically runs `vdirsyncer sync` and done! (can be done e.g. through cronie, available by default at Manjaro)
+#  Sadly, you will need to always pay attention to which calendar you add through orage, it forces its default calendar on new file creation
+
+Just change orage's default calendar to the newly created calendar acquired by syncing with google
 
