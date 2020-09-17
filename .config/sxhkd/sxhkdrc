@@ -36,7 +36,7 @@
 
 ## Bring Albert on/off screen
 super + a
-	albert toggle
+	albert toggle; bspc node marked -a; bspc node -g marked=off
 
 ## Bring Whiskermenu on/off screen
 super + s
@@ -57,6 +57,10 @@ super + F2
 ## Open mail reader
 super + F3
 	exo-open --launch MailReader
+
+## Launching Helper.md
+super + F11
+	mousepad ${HOME}/.config/Helper.md	
 
 
 # Screenshotting
@@ -91,6 +95,10 @@ super + ctrl + space
 	{pkill picom ,\
 	picom -b --experimental-backends }
 
+## Make sxhkd reload its configuration files
+super + shift + Escape
+	pkill -USR1 -x sxhkd
+
 
 # Media keys (some keyboards have those, often availble through "fn" button)
 # ______________
@@ -120,10 +128,10 @@ XF86AudioPrev
 	playerctl previous
 	
 XF86MonBrightnessDown
-	xbacklight -dec 10
+	brightnessctl s 10-
 
 XF86MonBrightnessUp
-	xbacklight -inc 10
+	brightnessctl s +10
 
 XF86Sleep
 	systemctl suspend
@@ -268,7 +276,8 @@ super + shift + {Left,Down,Up,Right}
 
 ## Resize focused window
 super + {bracketleft,bracketright}
-	bspc node focused --resize bottom_right {5 5, -5 -5}; bspc node focused --resize top_left {5 5, -5 -5}; 
+	~/.config/bspwm/bspwm-resize.sh {contract,expand} 10
+
 
 # Window selecting and juggling
 # _____________
@@ -321,7 +330,7 @@ super + alt + b
 	bspc node @brother -B
 	
 ## Undo balancing (equalize windows)
-super + ctrl + b
+super + shift + b
 	bspc node @/ -E
 
 ## Mirror and flip leaves of tree
@@ -355,10 +364,6 @@ super + button{4,5}
 # Other utilities
 # ______________
 
-## Make sxhkd reload its configuration files
-super + shift + Escape
-	pkill -USR1 -x sxhkd
-
 ## Cleanly quit bspwm
 super + shift + ctrl + q
 	bspc quit 
@@ -366,4 +371,5 @@ super + shift + ctrl + q
 ## To open bspwm program in case bspwmrc fails to execute/you want to restart it
 super + shift + r
 	bspwmrc
+
 
