@@ -1,0 +1,59 @@
+# Enable copying to clipboard
+set selection-clipboard clipboard
+
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+
+# Stop at page boundries
+set scroll-page-aware "true"
+set smooth-scroll "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+
+# Zoom settings
+set zoom-min 10
+set guioptions ""
+
+# zathurarc-dark
+
+set font "mononoki 15"
+set default-bg "#FFFFFF" #00
+set default-fg "#222222" #01
+
+set statusbar-fg "#000000" #04
+set statusbar-bg "#F5F5F5" #01
+
+set inputbar-bg "#F5F5F5" #00 currently not used
+set inputbar-fg "#000000" #02
+
+set notification-error-bg "#F73639" #08
+set notification-error-fg "#FFFFFF" #00
+
+set notification-warning-bg "#FFBA14" #08
+set notification-warning-fg "#FFFFFF" #00
+
+set highlight-color "#6ECEF4" #0A
+set highlight-active-color "#FFFFFF" #0D
+
+set completion-highlight-fg "#000000" #02
+set completion-highlight-bg "#0598DB" #0C
+
+set completion-bg "#FAFAFA" #02
+set completion-fg "#222222" #0C
+
+set notification-bg "#90A959" #0B
+set notification-fg "#151515" #00
+
+set recolor "true"
+set recolor-lightcolor "#FFFFFF" #00
+set recolor-darkcolor "#222222" #06
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+
+set render-loading "false"
+set scroll-step 50
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
