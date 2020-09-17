@@ -8,6 +8,7 @@
 - alacritty 
 - albert
 - neovim 
+- zathura
 - picom-tryone
 - xdotool (important dependency for some hacks in bspwm) 
 - newsboat 
