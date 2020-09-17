@@ -3,6 +3,7 @@
 		"firefox": "Firefox",
 		"Steam": "Steam",
 		"vlc": "vlc",
+		"Parole": "Player",
 		"weechat": "Chat",
 		"urxvt": "TerminalEmulator",
 		"code-oss": "IDE",
@@ -46,7 +47,6 @@
 		"Xfce4-display-settings": "Settings",
 		"GParted": "Database",
 		"Gtk-lshw": "HardwareMonitor",
-		"Wrapper-2.0": "Menu",
 		"KeePassXC": "Security",
 		"Luminance HDR": "Photography",
 		"lyx": "Math",
@@ -70,11 +70,10 @@
 		"UserFeedbackConsole": "Database",
 		"Xournalpp": "Note",
 		"kde_wacom_tabletfinder": "HardwareMonitor",
-		"albert": "Menu",
 		"Xfburn": "HardwareMonitor",
 		"Ncmpcpp": "Music",
 		"Cava": "Audio",
-		"Newsboat": ""
+		"Newsboat": "News"
 	},
 	"categories": {
 		"Email": ["", 10],
@@ -121,8 +120,7 @@
 		"Filesystem": ["", 90],
 		"FileTools": ["", 92],
 		"TextEditor": ["", 94],
-		"TerminalEmulator": ["", 96],
-		"Menu": ["", 98]
+		"TerminalEmulator": ["", 96]
 	},
 	"indexes": {
 		"1": "1",
